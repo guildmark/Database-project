@@ -1,0 +1,90 @@
+﻿@model Projekt.Models.Details.MovieReviewDetail
+
+@{
+    ViewData["Title"] = "InsertReview";
+
+    int i = 0;
+    if (ViewData["Genre"] != null)
+    {
+        i = (int)ViewData["Genre"];
+    }
+    string s = @ViewBag.message;
+    if (@ViewBag.message != null)
+    {
+
+    }
+
+}
+
+<h2>Write a new review</h2>
+
+<h4>Review form</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="InsertReview">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control"/>
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReleaseYear" class="control-label"></label>
+                <input asp-for="ReleaseYear" class="form-control" />
+                <span asp-validation-for="ReleaseYear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Genre" class="control-label"></label>
+                <select class="form-control" id="Genre" name="Genre">
+
+                    @foreach (Projekt.Models.GenreDetails GenreDetail in ViewBag.genres)
+                    {
+                        @if (GenreDetail.Id != i)
+                        {
+                            <option value="@GenreDetail.Id"> @GenreDetail.Name </option>
+                        }
+                        else
+                        {
+                            <option value="@GenreDetail.Id " selected> @GenreDetail.Name</option>
+                        }
+                    }
+                </select>
+                <div>
+                    <a asp-action="InsertGenre" style="padding: 10px 5px;">Add Genre</a>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Actor" class="control-label"></label>
+                <input asp-for="Actor" class="form-control" />
+                <span asp-validation-for="Actor" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Grade" class="control-label"></label>
+                <input asp-for="Grade" class="form-control" />
+                <span asp-validation-for="Grade" class="text-danger"></span>
+              
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to Start</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

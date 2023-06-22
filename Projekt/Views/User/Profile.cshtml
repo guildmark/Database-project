@@ -1,0 +1,55 @@
+﻿@model Projekt.Models.Details.UserDetails
+
+@{
+    ViewData["Title"] = "Profile2";
+}
+
+<h2>Your Profile</h2>
+
+<!--<p>ERROR: @ViewBag.error</p>-->
+
+<div class="picture">
+    <img src='@Url.Action("Show", "Image", new { id = Model.Image})' alt="Profile picture" />
+</div>
+
+
+<div>
+    <h4>Profile Details</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Mail)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Mail)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+
+        </dd>
+
+        <div>
+            <a asp-action="Description" style="padding: 10px 5px;">Update description</a>
+        </div>
+        <div>
+            <a asp-action="ChangePassword" style="padding: 10px 5px;">Change Password</a>
+        </div>
+
+    </dl>
+</div>
+

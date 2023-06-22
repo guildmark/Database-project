@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Projekt.Models.Details.MovieReviewDetail>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+<div class="text-center">
+    <h1 class="display-4">Movie Reviews</h1>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <!-- IMAGE TABLE HEADER-->
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Username)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.ReleaseYear)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Grade)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                int i = item.Image;
+
+            <tr>
+                <td>
+                    <img class="reviewPic" src='@Url.Action("Show", "Image", new { id = i})' alt="Picture of movie"/>
+
+                </td>
+                <td>
+
+                    <!--Clickable links @Html.DisplayFor(modelItem => item.Title)-->
+                    @Html.ActionLink(item.Title, "Details", new { title = item.Title })
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseYear)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Grade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <!-- CRUD, SHOULDNT BE ABLE TO EDIT OR DELETE OTHERS
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+        @Html.ActionLink("Details", "Details", new { title = item.Title }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+
+    </td>
+    -->
+            </tr>
+                
+            }
+        </tbody>
+    </table>
+
+</div>

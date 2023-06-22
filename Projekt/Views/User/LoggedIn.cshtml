@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "LoggedIn";
+}
+
+<h2>Welcome @ViewBag.username!</h2>
+
+
+<div class="description" style="text-align: center;">
+    <p>Browse around and make yourself at home!</p>
+    <div>
+        <a asp-action="UserReviews" style="padding: 10px 5px;">My Reviews</a>
+        <a asp-action="Profile" style="padding: 10px 5px;">Profile</a>
+    </div>
+
+</div>
+
+
